@@ -1,0 +1,382 @@
+   /* variável das cores*/
+:root {
+    --off-white: #FAF6F0;
+    --preto-suve: #2B161A;
+    --rosa-escuro: #4A282D;
+    --rosa-nude: #A36D74;
+    --rosa-claro: #F3ECE3;
+    --texto-suave: #5C4347;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--off-white);
+    color: var(--preto-suve);
+    overflow-x: hidden;    /* esconde a barra de rolagem*/
+}
+
+section {
+    min-height: 100vh;
+    padding: 100px 10%;  /* 100px de espaço em cima e em baixo, e 10% pra laterais*/
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;   /* centraliza */
+}
+
+.titles {
+    font-family: 'DM Serif Display', serif;
+    font-size: 45px;
+    color: var(--rosa-escuro);
+    margin-bottom: 40px;
+    letter-spacing: -1px;  /* negativo pra juntar em vez de separar ne */
+    animation: viewProduto;
+    animation-timeline: view();  /* a animação so entra quando a pessoa desce a página*/
+}
+
+.header-page {
+    width: 100%; 
+    position: fixed;   /* fixou o menu no topoooo*/
+    top: 0;
+    left: 0;   /* o top e o left pra deixar a barra coladinha em cima e na esquerda*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;   /* 30px de espaço interno geral e 10% nas laterais*/
+    z-index: 10;   /* deixa ele em cima de td mundo*/
+    background-color: var(--off-white);
+    border-bottom: 1px solid rgba(74, 40, 45, 0.05);   /* uma linhazinha em cima do menu */
+    transition: 0.3s;
+}
+
+.logo-angel {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    letter-spacing: 5px; /* espaço no angel de cima (logo)*/
+    color: var(--rosa-escuro);
+    transition: 0.3s;
+}
+
+.logo-angel:hover {
+    scale: 1.05;   /* deixa maior quando passa o mouse*/
+}
+
+.header-menu {
+    display: flex;
+    list-style: none;  /* sem nada */
+    gap: 40px;
+}
+
+.header-menu a {
+    text-decoration: none;
+    color: var(--rosa-escuro);
+    font-weight: 400;
+    text-transform: uppercase;   /* tudo maiúsculo */
+    font-size: 12px;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 4px;   /* espaço abaixo do texto*/
+    transition: 0.3s;
+}
+   /* sublinhar o menu quando o mouse passar em cima*/
+.header-menu a::after {
+    content: '';   /* cria um elemento vazio embaixo do texto do link(vi isso na internet)*/
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;       /* não esta pegando nada do menu(largura)*/
+    height: 1px;        
+    background-color: var(--rosa-nude);
+    transition: 0.3s;
+}
+.header-menu a:hover::after {
+    width: 100%;    /* agora ta com a largura total, entt ta pegando o texto*/
+}
+
+.header-menu a:hover {
+    color: var(--rosa-nude);
+}
+
+
+.hero {
+    background-image: linear-gradient(rgba(250, 246, 240, 0.2), rgba(250, 246, 240, 0.9)), url('img/fundo_angels_hero.png');
+    background-attachment: fixed;  /* fixou a imagem */
+    width: 100%;
+    height: 100vh;  /* vai ocupar toda a largura da tela */
+    background-repeat: no-repeat;
+    background-size: cover;  /* sem distorcer */
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    padding-left: 10%;
+    box-sizing: border-box;
+}
+
+.hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 8vmin;
+    width: 50%;
+    line-height: 1.1;
+    color: var(--preto-suve);
+    text-wrap: balance;  /* distribui as palavras  */
+    animation: titulo 0.6s linear;  /* a animação */
+}
+
+.hero-title span {
+    color: var(--rosa-nude);
+    font-style: italic;
+}
+
+@keyframes titulo {
+    from {
+        transform: translateX(-500px);  /* o texto vai estar laaa atrass */
+    }
+    to {
+        transform: translateX(0);  /* e agr ele ta no lugar de novo */
+    }
+}
+
+.hero-text {
+    width: 40%;
+    font-weight: 300;
+    text-wrap: balance;
+    font-size: 1.1rem;  /* quer dizer que vai ser 1.1 vezes o tamanho comum */
+    line-height: 1.6;
+    max-width: 550px;  /* n pode passar de 550 pixels */
+    color: var(--texto-suave);
+}
+
+.btn {  /* dentro do botão */
+    background-color: var(--rosa-escuro);
+    color: var(--off-white);
+    text-decoration: none;
+    padding: 16px 40px;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 2px;
+    border-radius: 50px;
+    display: inline-flex;  /* alinhar lado a lado */
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0.7px 0.7px 15px var(--rosa-nude);  /* sombra */
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: var(--rosa-nude);
+    color: var(--off-white);
+}
+
+.seta {
+    animation: arrow 1s linear infinite; /* faz a seta do botão ficar mexendo infinitamente  */
+}
+
+@keyframes arrow {
+    50% {
+        transform: translateX(6px);  /* ou seja, vai mexer 6 px a setinha  */
+    }
+}
+
+.historia {
+    background-color: var(--rosa-claro);
+}
+
+.historia-conteudo {
+    max-width: 800px;
+    animation: viewProduto;  /* dei o nome pra animação  */
+    animation-timeline: view(); /* a animação so vai acontecer quando descer a tela(scroll) */
+}
+
+.historia-texto {
+    font-family: 'Inter', sans-serif;
+    font-size: 600;
+    line-height: 1.5;  /* espaçamento entre as linhas da história */
+    color: var(--texto-suave);
+    font-weight: 300;
+}
+
+.produtos {
+    background-color: var(--off-white);
+    
+}
+
+.grid-produtos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.grid-produtos-card {
+    width: 30%;
+    background-color: var(--off-white);
+    border: 1px solid rgba(74, 40, 45, 0.08);
+    padding: 40px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: var(--preto-suve);
+    box-shadow: 0.7px 0.7px 15px rgba(74, 40, 45, 0.05);  /*sombrinha*/
+    transition: 0.3s;
+    animation: viewProduto;
+    animation-timeline: view();
+}
+
+.grid-produtos-card img {
+    width: 75%;
+    transition: 0.3s;
+}
+
+.grid-produtos-card h3 {
+    font-family: 'DM Serif Display', serif;  /* outra fonte */
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--rosa-escuro);
+}
+
+.grid-produtos-card p {
+    width: 90%;
+    color: var(--texto-suave);
+    line-height: 1.6;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.grid-produtos-card:hover {
+    scale: 1.02;
+    box-shadow: 1px 1px 35px var(--rosa-nude);
+}
+
+.grid-produtos-card:hover img {
+    scale: 1.08;
+}
+
+
+   /* animação do título dos produtos*/
+@keyframes viewProduto {
+    from {
+        opacity: 0.5;  /* n aparece ainda*/
+        transform: scale(0.7);
+    }
+    to {
+        opacity: 1;   /* agr aparece */
+        transform: scale(1);
+    }
+}
+
+.galeria {
+    width: 90%;
+    margin: 30px auto;
+}
+
+.grid-galeria {
+    columns: 3 300px;
+}
+
+.grid-galeria img {
+    width: 100%;
+    margin-block: 10px;
+    border: 1px solid rgba(74, 40, 45, 0.08);
+    filter: grayscale(1);  /*deixa em preto e branco, e dps.....*/
+    transition: 0.3s;
+}
+
+.grid-galeria img:hover {
+    filter: grayscale(0);   /*volta as cores normaiss*/
+    scale: 1.05;
+}
+
+.contatos {
+    background-color: var(--rosa-escuro);
+    color: var(--off-white);
+    align-items: center;
+}
+
+.contatos .titles {
+    color: var(--off-white);
+    align-items: center;
+}
+
+.contatos-suporte {
+    max-width: 900px;
+    animation: viewProduto;
+    animation-timeline: view();
+}
+
+.contatos-subtitulo {
+    font-size: 18px;
+    color: var(--rosa-claro);
+    margin-bottom: 50px;
+    font-weight: 300;
+}
+
+.icones-contato {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.icone-link {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: var(--off-white);
+    text-decoration: none;
+    width: 45%;
+    transition: 0.3s;
+}
+
+.icone-link i {
+    font-size: 28px;
+    color: var(--rosa-nude);
+    transition: 0.3s;
+}
+
+.icone-link span {
+    font-size: 15px;
+    font-weight: 300;
+}
+   /*icone-link pra os contatos*/
+.icone-link:hover {
+    color: var(--rosa-claro);
+}
+
+.icone-link:hover i {
+    scale: 1.1;
+    color: var(--off-white);
+}
+
+@media (width <= 900px) {
+    .grid-produtos-card {
+        width: 45%;
+    }
+    }
+    .icone-link {
+        width: 100%;
+    }
+
+
+@media (width <= 650px) {
+    .grid-produtos-card {
+        width: 90%;
+    }
+    .header-menu {
+        display: none;
+    }
+}

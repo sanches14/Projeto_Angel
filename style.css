@@ -191,20 +191,51 @@ section {
 
 .historia {
     background-color: var(--rosa-claro);
+    display: flex;
+    align-items: center;
 }
 
 .historia-conteudo {
-    max-width: 800px;
+    max-width: 1200px;
     animation: viewProduto;  /* dei o nome pra animação  */
     animation-timeline: view(); /* a animação so vai acontecer quando descer a tela(scroll) */
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    gap: 60px;
+    width: 100%;
 }
 
 .historia-texto {
     font-family: 'Inter', sans-serif;
-    font-size: 600;
+    font-size: 900;
     line-height: 1.5;  /* espaçamento entre as linhas da história */
     color: var(--texto-suave);
-    font-weight: 300;
+    font-weight: 500;
+}
+
+.historia-textos{
+    width: 55%;
+}
+
+.historia-imagem{
+    width: 32%;
+    display: flex;
+    justify-content: center;
+}
+
+.historia-imagem img{
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 1px 1px 25px rgba(74, 40, 45, 0.15);
+    transition: 0.3s;
+    max-width: 340px;
+    height: 500px;
+    object-fit: cover;
+}
+
+.historia-imagem img:hover{
+    scale: 1.05;
 }
 
 .produtos {
